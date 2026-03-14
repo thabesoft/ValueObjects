@@ -6,7 +6,7 @@ namespace ThabeSoft.ValueObjects.Cn;
 /// <summary>
 /// 中国居民身份证值对象 (GB11643-1999)
 /// </summary>
-public record CnIdCard : ISpanParsable<CnIdCard>
+public sealed record  CnIdCard : ISpanParsable<CnIdCard>, IEquatable<CnIdCard>
 {
     /// <summary>
     /// 完整的 18 位身份证号码字符串。
@@ -38,7 +38,9 @@ public record CnIdCard : ISpanParsable<CnIdCard>
     /// </summary>
     public required char Checksum { get; init; }
 
-
+    /// <summary>
+    /// 一个空的身份证对象
+    /// </summary>
     public static CnIdCard Empty { get; } = new()
     {
         Number = "000000000000000000",
@@ -278,5 +280,32 @@ public record CnIdCard : ISpanParsable<CnIdCard>
         char actual = char.ToUpper(id[17]);
 
         return actual == expected;
+    }
+
+    /// <summary>
+    /// 比较性别码
+    /// </summary>
+    /// <param name="other"></param>
+    /// <returns></returns>
+    public bool Equals(CnIdCard? other)
+    {
+        if (other is null) return false;
+        return Number.Equals(other.Number, StringComparison.OrdinalIgnoreCase);
+    }
+    /// <summary>
+    /// 用完整身份证吗的HashCode
+    /// </summary>
+    /// <returns></returns>
+    public override int GetHashCode()
+    {
+        return Number.ToLower().GetHashCode();
+    }
+    /// <summary>
+    /// 返回身份证格式
+    /// </summary>
+    /// <returns></returns>
+    public override string ToString()
+    {
+        return Number.ToUpper().ToString();
     }
 }

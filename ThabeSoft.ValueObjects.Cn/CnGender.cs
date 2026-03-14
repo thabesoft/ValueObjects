@@ -64,16 +64,28 @@ public sealed record CnGender : IEquatable<CnGender>
     }
 
 
-
+    /// <summary>
+    /// 比较性别码
+    /// </summary>
+    /// <param name="other"></param>
+    /// <returns></returns>
     public bool Equals(CnGender? other)
     {
         if (other is null) return false;
         return Code == other.Code;
     }
+    /// <summary>
+    /// 用性别码的HashCode
+    /// </summary>
+    /// <returns></returns>
     public override int GetHashCode()
     {
         return Code.GetHashCode();
     }
+    /// <summary>
+    /// 返回性别名称
+    /// </summary>
+    /// <returns></returns>
     public override string ToString()
     {
         return Name;

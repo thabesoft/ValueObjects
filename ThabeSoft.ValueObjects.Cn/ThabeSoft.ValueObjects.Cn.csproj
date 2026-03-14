@@ -7,6 +7,7 @@
     
 
 	<PackageId>ThabeSoft.ValueObjects.Cn</PackageId>
+	<Version>1.0.0</Version>
     <Authors>DaThabe</Authors>
     <Company>ThabeSoft</Company>
     <Description>中国关联值对象库（身份证、手机号、行政区划等）</Description>
@@ -22,8 +23,6 @@
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <IncludeSymbols>true</IncludeSymbols>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
-  
-    <Version Condition="'$(PackageVersion)' == ''">0.0.1-dev</Version>
 	  
     <PackageReadmeFile>README.md</PackageReadmeFile>
 

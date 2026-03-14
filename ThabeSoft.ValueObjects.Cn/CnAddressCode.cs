@@ -135,9 +135,10 @@ public record CnAddressCode : IParsable<CnAddressCode>, ISpanParsable<CnAddressC
         return Parse(s.AsSpan(), provider);
     }
 
-
-
-
+    /// <summary>
+    /// 返回6位地址码
+    /// </summary>
+    /// <returns></returns>
     public override string ToString()
     {
         return FullCode;
