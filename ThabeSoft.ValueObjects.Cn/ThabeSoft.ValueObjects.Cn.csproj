@@ -4,6 +4,33 @@
     <TargetFramework>net10.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    
+
+	<PackageId>ThabeSoft.ValueObjects.Cn</PackageId>
+    <Authors>DaThabe</Authors>
+    <Company>ThabeSoft</Company>
+    <Description>中国关联值对象库（身份证、手机号、行政区划等）</Description>
+    <Copyright>Copyright © ThabeSoft 2024</Copyright>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+	
+  
+    <PackageProjectUrl>https://github.com/thabesoft/ValueObjects</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/thabesoft/ValueObjects</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>China;ValueObject;IdCard;Mobile;Parsing;Span</PackageTags>
+  
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+  
+    <Version Condition="'$(PackageVersion)' == ''">0.0.1-dev</Version>
+	  
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+
   </PropertyGroup>
+	
+  <ItemGroup>
+    <None Include="README.md" Pack="true" PackagePath="\" />
+  </ItemGroup>
 
 </Project>
