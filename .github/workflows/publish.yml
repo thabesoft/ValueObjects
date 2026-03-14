@@ -3,7 +3,9 @@ name: Publish to NuGet
 on:
   push:
     tags:
-      - 'v*' # 匹配 v1.0.0, v1.0.1-alpha.1 等所有标签
+      - 'v*'
+    branches:
+      - master 
 
 jobs:
   publish:
@@ -16,7 +18,6 @@ jobs:
         with:
           dotnet-version: '8.0.x'
 
-      # 提取版本号逻辑：将 refs/tags/v1.2.3 转换为 1.2.3
       - name: Extract Version
         id: get_version
         run: |
@@ -29,10 +30,8 @@ jobs:
       - name: Build
         run: dotnet build --configuration Release --no-restore
 
-      # 打包：注入动态提取的版本号
       - name: Pack
         run: dotnet pack --configuration Release --no-build -o . /p:PackageVersion=${{ steps.get_version.outputs.VERSION }}
 
-      # 推送
       - name: Push to NuGet
         run: dotnet nuget push *.nupkg --api-key ${{ secrets.NUGET_AUTH_TOKEN }} --source https://api.nuget.org/v3/index.json --skip-duplicate
